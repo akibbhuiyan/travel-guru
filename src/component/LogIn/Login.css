@@ -1,0 +1,102 @@
+.login-form-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	width: 570px;
+	margin:  auto;
+}
+.login-form {
+	border: 1px solid #ABABAB;
+	border-radius: 5px;
+	padding: 20px 25px;
+	margin-bottom: 25px;
+}
+.login-form h2 {
+	font-size: 24px;
+	font-weight: 700;
+	margin-bottom: 15px;
+	margin-left: 9px;
+}.login-form input {
+	width: 92%;
+	padding: 10px 0;
+	border: none;
+	border-bottom: 1px solid;
+	margin-left: 13px;
+	margin-bottom: 23px;
+}.login-form .mainBtn {
+	border-bottom: 0;
+	margin-top: 17px;
+}.login-form span {
+	text-align: center;
+	display: block;
+	font-size: 16px;
+	margin: 10px 0;
+}.login-form span a {
+	color: #f9a51a;
+	text-decoration: none;
+}.login-form input:focus-visible {
+	outline: navajowhite;
+}.remember {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 14px 0;
+}.checkbox {
+	display: flex;
+	align-items: center;
+}.checkbox input {
+	margin-bottom: 0;
+	display: inline-block;
+	width: 25px;
+	height: 16px;
+}.checkbox label {
+	margin-left: 4px;
+	font-size: 18px;
+}.remember a {
+	color: #f9a51a;
+	font-size: 17px;
+}
+.devider{
+	position: relative;
+}.devider p {
+	font-size: 18px;
+	font-weight: 600;
+}
+.devider::before {
+	content: '';
+	position: absolute;
+	width: 177px;
+	height: 2px;
+	left: -6.5rem;
+	background-color: #000;
+	top: 13px;
+	transform: translate(-50%,-50%);
+}
+.devider::after {
+	content: '';
+	position: absolute;
+	width: 177px;
+	height: 2px;
+	left: 7.5rem;
+	background-color: #000;
+	top: 13px;
+	transform: translate(-50%,-50%);
+}.fb-btn {
+	color: #3076FF;
+}.social-login {
+	width: 67%;
+	padding: 14px 26px;
+	background-color: transparent;
+	border-radius: 44px;
+	border: 1px solid #c7c7c7;
+	margin: 10px;
+	text-align: start;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 4rem;
+}.social-login svg {
+	font-size: 30px;
+}

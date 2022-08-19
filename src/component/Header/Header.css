@@ -1,0 +1,31 @@
+.navbar-full .search-bar input {
+	padding-right: 10.5rem;
+	background-color: #0000000a;
+	color: #fff;
+	padding-left: 33px;
+}.search-bar {
+	position: relative;
+	margin-left: 10rem;
+}.search-icon {
+	position: absolute;
+	left: 11px;
+	top: 6px;
+    color: #8c9399;
+}
+.navbar-expand-lg .navbar-nav .nav-link {
+	padding: 8px 20px !important;
+}
+.navbar-allLink a {
+	color: #ffff;
+	font-size: 16px;
+	line-height: 20px;
+	padding: 1px 4px;
+	margin-left: 23px;
+	display: flex;
+	align-items: center;
+    text-decoration: none;
+}
+
+.logo {
+	width: 120px;
+}

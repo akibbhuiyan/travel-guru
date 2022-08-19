@@ -1,0 +1,37 @@
+.booking-form{
+	margin-top: 8rem !important;
+}
+.place-details h2 {
+	text-transform: uppercase;
+	font-size: 97px;
+	font-weight: 400;
+	font-family: 'Bebas Neue', cursive;
+	font-style: normal;
+}.place-details p {
+	font-size: 17px;
+	line-height: 25px;
+	font-weight: 400;
+	margin-bottom: 40px;
+}.MuiInputBase-root.MuiOutlinedInput-root.MuiInputBase-colorPrimary.MuiInputBase-formControl.MuiInputBase-adornedEnd.css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root {
+	background-color: #f2f2f2;
+	margin-top: 16px;
+}
+.MuiFormControl-root.MuiTextField-root.css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+	margin-top: 30px;
+	margin-bottom: 23px;
+}
+.form-control label {
+	font-size: 16px;
+	display: block;
+	margin-bottom: 8px;
+	font-weight: 500;
+}.form-control input {
+	width: 100%;
+	padding: 20px 15px;
+	background-color: #f2f2f2;
+	border: none;
+	border-radius: 6px;
+	margin-bottom: 15px;
+}.mainBtn{
+	background-color: #F9A51A !important;
+}

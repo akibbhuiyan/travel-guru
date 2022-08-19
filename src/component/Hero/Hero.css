@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+
+.slick-arrow .slick-next,.slick-arrow .slick-next{
+    color: #000;;
+}.hero-container {
+	margin-top: 100px;
+    margin-left: 120px;
+    width: 83%;
+}
+.hero-container img {
+	height: 416px;
+	width: 270px;
+}.slick-slider.slick-initialized {
+	width: 50%;
+}.hero-container {
+	margin-top: 100px;
+}.slick-dots.custom-ind {
+	position: absolute;
+	right: -47rem;
+	top: 0px;
+	display: flex !important;
+	justify-content: space-evenly;
+	gap: 14rem;
+}.slick-prev {
+	left: 95%;
+}.slick-next {
+	right: -6rem;
+}
+.slick-prev, .slick-next {
+	width: 50px;
+	height: 50px;
+}.slick-prev::before, .slick-next::before {
+	font-size: 53px;
+}.slick-prev, .slick-next {
+	bottom: -14rem;
+	transform: translate(50%,0);
+    top:unset
+}.travel-title {
+	position: relative;
+}.travel-title h1 {
+	position: absolute;
+	bottom: 21px;
+	text-transform: uppercase;
+}.hero-car h2 {
+	text-transform: uppercase;
+	font-size: 97px;
+	font-weight: 400;
+	font-family: 'Bebas Neue', cursive;
+	font-style: normal;
+}.hero-car p {
+	font-size: 17px;
+	line-height: 25px;
+	font-weight: 400;
+	margin-bottom: 40px;
+}

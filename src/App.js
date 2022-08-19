@@ -1,24 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import Home from './component/Home/Home';
+import { Routes, Route, } from 'react-router-dom'
+import Booking from './component/Booking/Booking';
+import { createContext, useState } from 'react';
+import BookingComplete from './component/BokkingComplete/BookingComplete';
+import PrivateRoute from './component/PrivateRoute/PrivateRoute';
+import Login from './component/LogIn/Login';
+export const UserContext = createContext();
 
 function App() {
+  const [userLoggedIn, setUserLoggedIn] = useState({})
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserContext.Provider value={[userLoggedIn, setUserLoggedIn]}>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/home' element={<Home />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/bookingComplete' element={<PrivateRoute><BookingComplete /></PrivateRoute>} />
+        <Route path='/place/:id' element={<Booking />} />
+
+      </Routes>
+    </UserContext.Provider>
   );
 }
 
