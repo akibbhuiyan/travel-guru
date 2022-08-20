@@ -1,9 +1,10 @@
 import React from 'react';
+import Header2 from '../Header2/Header2';
 
 const BookingComplete = () => {
     return (
         <div>
-            <h1>Bokkin Complete</h1>
+            <Header2 />
         </div>
     );
 };
