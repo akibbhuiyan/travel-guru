@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600&display=swap');
+*{
+	font-family: 'Montserrat', sans-serif !important;
+
+}
+.hotel-room h2 {
+	font-size: 24px;
+	font-weight: 700;
+}
+.room-image img {
+	width: 100%;
+	border-radius: 7px;
+	margin-top: 6px;
+}.room-info h1 {
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 22px;
+}.room-info p {
+	font-size: 15px;
+	font-weight: 400;
+	color: #6A6A6A;
+	margin-bottom: 5px;
+}.ratingandPrice {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}.ratingandPrice p {
+	font-size: 14px;
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	color: #000;
+	font-weight: 500;
+}.ratingandPrice p svg {
+	color: #FFAF38;
+}
+.ratingandPrice h5 {
+	font-size: 15px;
+	font-weight: 100;
+}.ratingandPrice span {
+	font-size: 19px;
+	font-weight: 500;
+}.room-image {
+	margin-bottom: 42px;
+}.googleMap iframe {
+	border-radius: 10px;
+	margin-top: 3rem;
+}

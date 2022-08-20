@@ -1,10 +1,7 @@
 .login-form-container {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	
 	height: 100vh;
-	width: 570px;
+	width: 400px;
 	margin:  auto;
 }
 .login-form {
@@ -60,6 +57,7 @@
 }
 .devider{
 	position: relative;
+	text-align: center;
 }.devider p {
 	font-size: 18px;
 	font-weight: 600;
@@ -67,9 +65,9 @@
 .devider::before {
 	content: '';
 	position: absolute;
-	width: 177px;
-	height: 2px;
-	left: -6.5rem;
+	width: 150px;
+	height: 1px;
+	left: 6.6rem;
 	background-color: #000;
 	top: 13px;
 	transform: translate(-50%,-50%);
@@ -77,16 +75,16 @@
 .devider::after {
 	content: '';
 	position: absolute;
-	width: 177px;
-	height: 2px;
-	left: 7.5rem;
+	width: 150px;
+	height: 1px;
+	left: 18.5rem;
 	background-color: #000;
 	top: 13px;
 	transform: translate(-50%,-50%);
 }.fb-btn {
 	color: #3076FF;
 }.social-login {
-	width: 67%;
+	width: 88%;
 	padding: 14px 26px;
 	background-color: transparent;
 	border-radius: 44px;

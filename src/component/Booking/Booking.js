@@ -9,15 +9,19 @@ import { Stack } from '@mui/system';
 import { DatePicker } from '@mui/x-date-pickers';
 import { TextField } from '@mui/material';
 import { useNavigate } from "react-router-dom";
+import { addToDatabase } from '../utilities/fakeDb';
 const Booking = () => {
     let navigate = useNavigate();
     const { id } = useParams();
     const { name, description } = travelPlace.find(place => place.id === Number(id));
     const [value, setValue] = useState(new Date());
+    const idNum = Number(id)
     const handleSubmit = (e) => {
-        navigate("../bookingComplete", { replace: true })
-
+        navigate(`../bookingComplete/${id}`, { replace: true })
         e.preventDefault()
+    }
+    const addplace = () => {
+        addToDatabase(id, 1)
     }
     return (
         <div className='home_Content'>
@@ -68,7 +72,7 @@ const Booking = () => {
                                     </div>
                                 </div>
 
-                                <input type="submit" value="Start Booking" className='mainBtn' />
+                                <input type="submit" value="Start Booking" className='mainBtn' onClick={addplace} />
 
                             </form>
                         </div>

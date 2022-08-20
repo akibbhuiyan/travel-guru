@@ -9,42 +9,44 @@
     width: 83%;
 }
 .hero-container img {
-	height: 416px;
-	width: 270px;
+	height: 300px;
 }.slick-slider.slick-initialized {
 	width: 50%;
 }.hero-container {
 	margin-top: 100px;
 }.slick-dots.custom-ind {
 	position: absolute;
-	right: -47rem;
-	top: 0px;
+	right: -35rem;
+	top: -20px;
 	display: flex !important;
 	justify-content: space-evenly;
-	gap: 14rem;
+	gap: 9rem;
 }.slick-prev {
-	left: 95%;
+	left: 87%;
 }.slick-next {
-	right: -6rem;
+	right: -2rem;
 }
 .slick-prev, .slick-next {
 	width: 50px;
 	height: 50px;
 }.slick-prev::before, .slick-next::before {
-	font-size: 53px;
+	font-size: 50px;
 }.slick-prev, .slick-next {
-	bottom: -14rem;
+	bottom: -4rem;
 	transform: translate(50%,0);
-    top:unset
+	top: unset;
 }.travel-title {
 	position: relative;
 }.travel-title h1 {
 	position: absolute;
 	bottom: 21px;
 	text-transform: uppercase;
+	font-size: 22px;
+	padding-left: 12px;
+	min-width: 180px;
 }.hero-car h2 {
 	text-transform: uppercase;
-	font-size: 97px;
+	font-size: 60px;
 	font-weight: 400;
 	font-family: 'Bebas Neue', cursive;
 	font-style: normal;

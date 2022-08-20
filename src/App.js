@@ -9,15 +9,15 @@ import Login from './component/LogIn/Login';
 export const UserContext = createContext();
 
 function App() {
-  const [userLoggedIn, setUserLoggedIn] = useState({})
-  console.log(userLoggedIn);
+  const [userLoggedIn, setUserLoggedIn] = useState({});
+  // console.log(userLoggedIn);
   return (
     <UserContext.Provider value={[userLoggedIn, setUserLoggedIn]}>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/home' element={<Home />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/bookingComplete' element={<PrivateRoute><BookingComplete /></PrivateRoute>} />
+        <Route path='/bookingComplete/:key' element={<PrivateRoute><BookingComplete /></PrivateRoute>} />
         <Route path='/place/:id' element={<Booking />} />
 
       </Routes>

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { initializeApp } from 'firebase/app';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signInWithPopup, FacebookAuthProvider, createUserWithEmailAndPassword, sendPasswordResetEmail, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import Header2 from '../Header2/Header2';
 import './Login.css'
 import { FcGoogle } from 'react-icons/fc'
@@ -13,6 +13,7 @@ const Login = () => {
     const [userLoggedIn, setUserLoggedIn] = useContext(UserContext)
     const [newUser, setNewUser] = useState(false);
     const [user, setUser] = useState({
+        isSignIn: false,
         firstname: '',
         lastname: '',
         name: '',
@@ -30,13 +31,11 @@ const Login = () => {
         let isFieldValid = true;
         if (e.target.name === 'email') {
             isFieldValid = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/.test(e.target.value)
-            console.log(isFieldValid);
         }
         if (e.target.name === 'password') {
             const isPassValid = e.target.value.length > 6;
             const passHasNum = /\d{1}/.test(e.target.value);
             isFieldValid = isPassValid && passHasNum;
-            console.log(isFieldValid);
         }
         if (isFieldValid) {
             const newUserinfo = { ...user }
@@ -46,6 +45,7 @@ const Login = () => {
         }
     }
     const handleSubmit = (e) => {
+        updateUserInfo(user.firstname, user.lastname)
         if (newUser && user.email && user.password) {
             createUserWithEmailAndPassword(auth, user.email, user.password)
                 .then(() => {
@@ -55,7 +55,9 @@ const Login = () => {
                     newUserInfo.name = user.firstname + user.lastname;
                     setUser(newUserInfo)
                     setUserLoggedIn(newUserInfo)
-                    updateUserInfo(newUserInfo.name)
+                    updateUserInfo(user.firstname, user.lastname)
+                    navigate("../", { replace: true });
+
                 })
                 .catch((error) => {
                     const newUserInfo = { ...user }
@@ -72,7 +74,7 @@ const Login = () => {
                     newUserInfo.success = true;
                     setUser(newUserInfo)
                     setUserLoggedIn(newUserInfo);
-                    navigate("../bookingComplete", { replace: true });
+                    navigate("../", { replace: true });
                 })
                 .catch((error) => {
                     const newUserInfo = { ...user }
@@ -83,15 +85,62 @@ const Login = () => {
         }
         e.preventDefault()
     }
-    const updateUserInfo = (name) => {
+    const updateUserInfo = (fname, lname) => {
         updateProfile(auth.currentUser, {
-            displayName: name,
+            displayName: fname + lname,
         }).then(() => {
             console.log('Name Update SuccesFulle');
 
         }).catch((error) => {
             console.log(error);
         });
+    }
+
+    const handleResetPass = (email) => {
+        sendPasswordResetEmail(auth, email)
+            .then(() => {
+                alert('Password Reset LINK Sent To your Email')
+                console.log(email);
+            })
+            .catch((error) => {
+                alert('Please enter Email')
+            });
+    }
+    const facebookProvider = new FacebookAuthProvider();
+    const handleFacebookSignin = () => {
+        signInWithPopup(auth, facebookProvider)
+            .then((result) => {
+                const user = result.user;
+                const { displayName, email } = user;
+                const fbSignInUser = {
+                    isSignIn: false,
+                    name: displayName,
+                    email: email,
+                }
+                setUser(fbSignInUser)
+                setUserLoggedIn(fbSignInUser);
+                navigate("../", { replace: true });
+            }).catch((err) => {
+                console.log(err, err.message);
+            });
+    };
+    const googleProvider = new GoogleAuthProvider();
+    const handleGoogleSignin = () => {
+        signInWithPopup(auth, googleProvider)
+            .then((result) => {
+                const user = result.user;
+                const { displayName, email } = user;
+                const googleSignInUser = {
+                    isSignIn: false,
+                    name: displayName,
+                    email: email,
+                }
+                setUser(googleSignInUser)
+                setUserLoggedIn(googleSignInUser);
+                navigate("../", { replace: true });
+            }).catch((err) => {
+                console.log(err, err.message);
+            });
     }
     return (
         <div>
@@ -117,7 +166,7 @@ const Login = () => {
                                 <input type="checkbox" name="checkbox" />
                                 <label htmlFor="checkbox">Remember Me</label>
                             </div>
-                            <a href="#">Forgot Password</a>
+                            <a href="#" onClick={() => handleResetPass(user.email)}>Forgot Password</a>
                         </div>
                     }
                     <input type="submit" value={newUser ? 'Create an Account' : "Login"} className='mainBtn' />
@@ -127,8 +176,8 @@ const Login = () => {
                     }
                 </form>
                 <div className="devider"><p>Or</p></div>
-                <button className='social-login'><BsFacebook className='fb-btn' />Continue With FaceBook</button>
-                <button className='social-login'><FcGoogle />Continue With Google</button>
+                <button className='social-login' onClick={handleFacebookSignin}><BsFacebook className='fb-btn' />Continue With FaceBook</button>
+                <button className='social-login' onClick={handleGoogleSignin}><FcGoogle />Continue With Google</button>
             </div>
         </div>
     );

@@ -21,7 +21,7 @@ const Hero = () => {
                 dots
             >
                 {
-                    travelPlace.map(place => <Place place={place}></Place>)
+                    travelPlace.map(place => <Place place={place} key={place.id}></Place>)
                 }
             </Slider>
         </div>

@@ -6,7 +6,10 @@ import { Link } from 'react-router-dom';
 import logo from '../../logo.png'
 import './Header.css'
 import { BiSearch } from 'react-icons/bi';
+import { useContext } from 'react';
+import { UserContext } from '../../App';
 function Header() {
+    const [userLoggedIn, setUserLoggedIn] = useContext(UserContext);
     return (
         <div className="container">
 
@@ -28,11 +31,13 @@ function Header() {
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                         >
-                            <Nav.Link href="/home">Home</Nav.Link>
-                            <Nav.Link href="/home">Destination</Nav.Link>
-                            <Nav.Link href="/home">Blog </Nav.Link>
-                            <Nav.Link href="/home">Contact</Nav.Link>
-                            <Link to='/login'> <button className='mainBtn'>Login</button></Link>
+                            <Link to="/home" className='text-white'>Home</Link>
+                            <Link to="/home" className='text-white'>Destination</Link>
+                            <Link to="/home" className='text-white'>Blog </Link>
+                            <Link to="/home" className='text-white'>Contact</Link>
+                            {
+                                userLoggedIn.email ? <p className='text-white mt-3'>{userLoggedIn.email}</p> : <Link to='/login' className='text-white'> <button className='mainBtn text-white'>Login</button></Link>
+                            }
                         </Nav>
 
                     </Navbar.Collapse>
