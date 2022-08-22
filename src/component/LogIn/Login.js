@@ -56,7 +56,8 @@ const Login = () => {
                     setUser(newUserInfo)
                     setUserLoggedIn(newUserInfo)
                     updateUserInfo(user.firstname, user.lastname)
-                    navigate("../", { replace: true });
+                    navigate(-2, { replace: true });
+
 
                 })
                 .catch((error) => {
@@ -74,7 +75,8 @@ const Login = () => {
                     newUserInfo.success = true;
                     setUser(newUserInfo)
                     setUserLoggedIn(newUserInfo);
-                    navigate("../", { replace: true });
+                    navigate(-2, { replace: true });
+
                 })
                 .catch((error) => {
                     const newUserInfo = { ...user }
@@ -119,7 +121,7 @@ const Login = () => {
                 }
                 setUser(fbSignInUser)
                 setUserLoggedIn(fbSignInUser);
-                navigate("../", { replace: true });
+                navigate(-2, { replace: true });
             }).catch((err) => {
                 console.log(err, err.message);
             });
@@ -137,7 +139,7 @@ const Login = () => {
                 }
                 setUser(googleSignInUser)
                 setUserLoggedIn(googleSignInUser);
-                navigate("../", { replace: true });
+                navigate(-2, { replace: true });
             }).catch((err) => {
                 console.log(err, err.message);
             });
