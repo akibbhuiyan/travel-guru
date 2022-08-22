@@ -15,7 +15,7 @@ function Header() {
 
             <Navbar expand="lg" className='navbar-full navbar-dark'>
                 <Container fluid>
-                    <Navbar.Brand href="/home"><img src={logo} alt="LOGO" className='logo' /></Navbar.Brand>
+                    <Link to="/home"><img src={logo} alt="LOGO" className='logo' /></Link>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll" >
                         <Form className="d-flex search-bar" >
@@ -32,9 +32,9 @@ function Header() {
                             navbarScroll
                         >
                             <Link to="/home" className='text-white'>Home</Link>
-                            <Link to="/home" className='text-white'>Destination</Link>
-                            <Link to="/home" className='text-white'>Blog </Link>
-                            <Link to="/home" className='text-white'>Contact</Link>
+                            <Link to="/destination" className='text-white'>Destination</Link>
+                            <Link to="/blog" className='text-white'>Blog </Link>
+                            <Link to="/contact" className='text-white'>Contact</Link>
                             {
                                 userLoggedIn.email ? <p className='text-white mt-3'>{userLoggedIn.email}</p> : <Link to='/login' className='text-white'> <button className='mainBtn text-white'>Login</button></Link>
                             }

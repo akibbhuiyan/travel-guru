@@ -16,7 +16,7 @@ function Header2() {
 
             <Navbar expand="lg" className='navbar-full navbar-dark'>
                 <Container fluid>
-                    <Navbar.Brand href="/home"><img src={darklogo} alt="LOGO" className='logo' /></Navbar.Brand>
+                    <Link to="/home"><img src={darklogo} alt="LOGO" className='logo' /></Link>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll" >
                         <Nav
@@ -25,9 +25,9 @@ function Header2() {
                             navbarScroll
                         >
                             <Link to="/home">Home</Link>
-                            <Link to="/home">Destination</Link>
-                            <Link to="/home">Blog </Link>
-                            <Link to="/home">Contact</Link>
+                            <Link to="/destination">Destination</Link>
+                            <Link to="/blog">Blog </Link>
+                            <Link to="/contact">Contact</Link>
                             {
                                 userLoggedIn.email ? <p className='mt-3'>{userLoggedIn.email}</p> : <Link to='/login' className='text-white'> <button className='mainBtn text-white'>Login</button></Link>
                             }

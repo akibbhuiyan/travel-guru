@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, signInWithPopup, FacebookAuthProvider, createUserWithEmailAndPassword, sendPasswordResetEmail, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import Header2 from '../Header2/Header2';
@@ -119,6 +119,8 @@ const Login = () => {
                     name: displayName,
                     email: email,
                 }
+                fbSignInUser.error = '';
+                fbSignInUser.success = true
                 setUser(fbSignInUser)
                 setUserLoggedIn(fbSignInUser);
                 navigate(-2, { replace: true });
@@ -137,6 +139,8 @@ const Login = () => {
                     name: displayName,
                     email: email,
                 }
+                googleSignInUser.error = '';
+                googleSignInUser.success = true
                 setUser(googleSignInUser)
                 setUserLoggedIn(googleSignInUser);
                 navigate(-2, { replace: true });
@@ -144,6 +148,18 @@ const Login = () => {
                 console.log(err, err.message);
             });
     }
+
+    const [password, setPassword] = useState('')
+    const [confrimPass, setConfirmpass] = useState('')
+    const [err, setErr] = useState('')
+    useEffect(() => {
+        if (password === confrimPass) {
+            setErr('')
+        } else {
+            setErr('Confirm Password must match with password')
+
+        }
+    }, [password, confrimPass])
     return (
         <div>
             <Header2 />
@@ -151,16 +167,16 @@ const Login = () => {
                 <form className='login-form' onSubmit={handleSubmit}>
                     <h2>{newUser ? 'Create an Account' : 'Login'}</h2>
                     {
-                        newUser && <input type="text" name='firstname' placeholder='First Name' onBlur={handleBlur} />
+                        newUser && <input type="text" name='firstname' placeholder='First Name' onBlur={handleBlur} required />
                     }
                     {
-                        newUser && <input type="text" name='lastname' placeholder='Last Name' onBlur={handleBlur} />
+                        newUser && <input type="text" name='lastname' placeholder='Last Name' onBlur={handleBlur} required />
 
                     }
-                    <input type="email" name='email' placeholder='Email Address' onBlur={handleBlur} />
-                    <input type="password" name="password" onBlur={handleBlur} placeholder='Password' />
+                    <input type="email" name='email' placeholder='Email Address' onBlur={handleBlur} required />
+                    <input type="password" name="password" onBlur={handleBlur} placeholder='Password' onChange={(e) => { setPassword(e.target.value) }} required />
                     {
-                        newUser && <input type="password" name="confirmPassword" placeholder='Confirm Password' onBlur={handleBlur} />
+                        newUser && <input type="password" name="confirmPassword" placeholder='Confirm Password' onBlur={handleBlur} onChange={(e) => { setConfirmpass(e.target.value) }} required />
                     }
                     {
                         !newUser && <div className="remember">
@@ -175,6 +191,15 @@ const Login = () => {
                     {
                         !newUser ? <span>Didn't Have an Account?<a href="#" onClick={() => setNewUser(!newUser)}> Create an Account </a></span> : <span>Already have an Account?<a href="#" onClick={() => setNewUser(!newUser)}> Login</a></span>
 
+                    }
+                    {
+                        user.success && <p className='text-center text-success'>User Logged in successfully</p>
+                    }
+                    {
+                        user.error && <p className='text-center text-danger'>{user.error}</p>
+                    }
+                    {
+                        newUser && <p className='text-center text-danger'>{err}</p>
                     }
                 </form>
                 <div className="devider"><p>Or</p></div>
